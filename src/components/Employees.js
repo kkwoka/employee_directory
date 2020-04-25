@@ -2,7 +2,6 @@ import React from "react";
 import './style.css';
 
 function Employees(props) {
-
   return (
     <tr>
       <td><img alt={ props.name } src={ props.image } /></td>

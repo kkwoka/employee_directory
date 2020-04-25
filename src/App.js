@@ -7,7 +7,6 @@ import Tablehead from './components/Tablehead';
 import DOMHeader from './components/DOMHeader';
 
 class App extends React.Component {
-
   state = {
     employees,
     search: "",
@@ -23,15 +22,11 @@ class App extends React.Component {
     let result = employees.results.sort((a, b) => {
       let nameA = a.name.first.toUpperCase();
       let nameB = b.name.first.toUpperCase();
-      if (nameA < nameB) {
-        return -1;
-      }
-      if (nameA > nameB) {
-        return 1;
-      }
+      if (nameA < nameB) { return -1; }
+      if (nameA > nameB) { return 1; }
       return 0;
     });
-    console.log("employees: ",result);
+    // console.log("employees: ",result);
     this.setState({...this.state, sorted: result})
   }
 
@@ -39,15 +34,11 @@ class App extends React.Component {
     let result = employees.results.sort((a, b) => {
       let nameA = a.name.first.toUpperCase();
       let nameB = b.name.first.toUpperCase();
-      if (nameA < nameB) {
-        return 1;
-      }
-      if (nameA > nameB) {
-        return -1;
-      }
+      if (nameA < nameB) { return 1; }
+      if (nameA > nameB) { return -1; }
       return 0;
     });
-    console.log("employees: ",result);
+    // console.log("employees: ",result);
     this.setState({...this.state, sorted: result})
   }
 
@@ -79,7 +70,10 @@ class App extends React.Component {
           searchEmployees={this.searchEmployees}
         />
         <table className="table table-striped">
-          <Tablehead sortEmployees={this.sortEmployees}/>
+          <Tablehead 
+            sortEmployeesASC={this.sortEmployeesASC} 
+            sortEmployeesDESC={this.sortEmployeesDESC}
+          />
             <tbody>
               { emps }
             </tbody>
