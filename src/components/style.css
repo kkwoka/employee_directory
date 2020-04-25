@@ -1,0 +1,17 @@
+td {
+    width: 300px;
+}
+
+.header {
+    background-color: darkblue;
+    color: white;
+    border-bottom:2px solid darkred;
+    text-align: center;
+}
+
+#search {
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
