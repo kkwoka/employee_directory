@@ -10,8 +10,22 @@ class App extends React.Component {
   state = {
     employees,
     search: "",
-    sorted: false
-  }
+    sorted: false,
+    // ascending: true
+
+    // Sort
+    // Get desired sort:
+    // const toggle = !this.state.ascending;
+    //  if(toggle) {
+    //   sort ascending
+    //   }
+    // else { 
+    //   sort descending 
+    // }
+    //this.setState( { employees: sortedArray, ascending: toggle} );
+    }
+    // this. setState( employees: [], {ascending: !this.state.ascending} );
+  
 
   searchEmployees = event => {
     let searchedFor = event.target.value;
@@ -42,8 +56,57 @@ class App extends React.Component {
     this.setState({...this.state, sorted: result})
   }
 
+  sortEmailASC = event => {
+    let result = employees.results.sort((a, b) => {
+      let emailA = a.email.toUpperCase();
+      let emailB = b.email.toUpperCase();
+      if (emailA < emailB) { return -1; }
+      if (emailA > emailB) { return 1; }
+      return 0;
+    });
+    // console.log("employees: ",result);
+    this.setState({...this.state, sorted: result})
+  }
 
-  render () {
+  sortEmailDESC = event => {
+    let result = employees.results.sort((a, b) => {
+      let emailA = a.email.toUpperCase();
+      let emailB = b.email.toUpperCase();
+      if (emailA < emailB) { return 1; }
+      if (emailA > emailB) { return -1; }
+      return 0;
+    });
+    // console.log("employees: ",result);
+    this.setState({...this.state, sorted: result})
+  }
+
+  sortDOBASC = event => {
+    let result = employees.results.sort((a, b) => {
+      let DOBA = a.dob.date.toUpperCase();
+      let DOBB = b.dob.date.toUpperCase();
+      if (DOBA < DOBB) { return -1; }
+      if (DOBA > DOBB) { return 1; }
+      return 0;
+    });
+    // console.log("employees: ",result);
+    this.setState({...this.state, sorted: result})
+  }
+
+  sortDOBDESC = event => {
+    let result = employees.results.sort((a, b) => {
+      let DOBA = a.dob.date.toUpperCase();
+      let DOBB = b.dob.date.toUpperCase();
+      if (DOBA < DOBB) { return 1; }
+      if (DOBA > DOBB) { return -1; }
+      return 0;
+    });
+    // console.log("employees: ",result);
+    this.setState({...this.state, sorted: result})
+  }
+  
+
+
+  render() {
     const emps = employees.results.filter((employee) => {
       if (this.state.search === "") {
         return employee
@@ -73,6 +136,11 @@ class App extends React.Component {
           <Tablehead 
             sortEmployeesASC={this.sortEmployeesASC} 
             sortEmployeesDESC={this.sortEmployeesDESC}
+            sortEmailASC={this.sortEmailASC} 
+            sortEmailDESC={this.sortEmailDESC}
+            sortDOBASC={this.sortDOBASC}
+            sortDOBDESC={this.sortDOBDESC}
+
           />
             <tbody>
               { emps }
