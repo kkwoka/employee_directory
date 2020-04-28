@@ -26,12 +26,14 @@ class App extends React.Component {
     }
     // this. setState( employees: [], {ascending: !this.state.ascending} );
   
-
+    // Search for Employee by First / Last name
   searchEmployees = event => {
     let searchedFor = event.target.value;
     this.setState({...this.state, search: searchedFor });
   }
 
+
+  // Sort Employee By Name ---------------------------------
   sortEmployeesASC = event => {
     let result = employees.results.sort((a, b) => {
       let nameA = a.name.first.toUpperCase();
@@ -40,7 +42,6 @@ class App extends React.Component {
       if (nameA > nameB) { return 1; }
       return 0;
     });
-    // console.log("employees: ",result);
     this.setState({...this.state, sorted: result})
   }
 
@@ -52,10 +53,11 @@ class App extends React.Component {
       if (nameA > nameB) { return -1; }
       return 0;
     });
-    // console.log("employees: ",result);
     this.setState({...this.state, sorted: result})
   }
 
+
+  // Sort Employee By Email ---------------------------------
   sortEmailASC = event => {
     let result = employees.results.sort((a, b) => {
       let emailA = a.email.toUpperCase();
@@ -64,7 +66,6 @@ class App extends React.Component {
       if (emailA > emailB) { return 1; }
       return 0;
     });
-    // console.log("employees: ",result);
     this.setState({...this.state, sorted: result})
   }
 
@@ -76,10 +77,11 @@ class App extends React.Component {
       if (emailA > emailB) { return -1; }
       return 0;
     });
-    // console.log("employees: ",result);
     this.setState({...this.state, sorted: result})
   }
 
+
+  // Sort Employee By D.O.B. ---------------------------------
   sortDOBASC = event => {
     let result = employees.results.sort((a, b) => {
       let DOBA = a.dob.date.toUpperCase();
@@ -88,7 +90,6 @@ class App extends React.Component {
       if (DOBA > DOBB) { return 1; }
       return 0;
     });
-    // console.log("employees: ",result);
     this.setState({...this.state, sorted: result})
   }
 
@@ -100,11 +101,8 @@ class App extends React.Component {
       if (DOBA > DOBB) { return -1; }
       return 0;
     });
-    // console.log("employees: ",result);
     this.setState({...this.state, sorted: result})
   }
-  
-
 
   render() {
     const emps = employees.results.filter((employee) => {
@@ -140,7 +138,6 @@ class App extends React.Component {
             sortEmailDESC={this.sortEmailDESC}
             sortDOBASC={this.sortDOBASC}
             sortDOBDESC={this.sortDOBDESC}
-
           />
             <tbody>
               { emps }
