@@ -26,7 +26,7 @@ class App extends React.Component {
     }
     // this. setState( employees: [], {ascending: !this.state.ascending} );
   
-    // Search for Employee by First / Last name
+  // Search for Employee by First / Last name
   searchEmployees = event => {
     let searchedFor = event.target.value;
     this.setState({...this.state, search: searchedFor });
